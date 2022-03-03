@@ -5,8 +5,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Link, NavLink, useParams } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const rows = [
 	{
@@ -56,7 +55,6 @@ const rows = [
 ];
 
 export default function Student() {
-	let { path } = useParams();
 	return (
 		<div className="flex flex-col bg-gradient-to-b from-indigo-300 via-pink-300 to-purple-500 h-screen pt-20">
 			<div className="flex  justify-around  my-10">

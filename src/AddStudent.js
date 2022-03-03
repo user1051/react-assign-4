@@ -1,4 +1,4 @@
-import { Button, OutlinedInput, TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 export default function AddStudent() {
 	const navigate = useNavigate();
