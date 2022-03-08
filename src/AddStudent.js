@@ -14,19 +14,19 @@ export default function AddStudent() {
 
 	useEffect(() => {
 		students.forEach((s) => {
-			if (s.id == studentId) {
+			if (s.id === studentId) {
 				setName(s.name);
 				setAge(s.age);
 				setCourse(s.course);
 				setBatch(s.batch);
 			}
 		});
-	}, []);
+	}, [students, studentId]);
 	const updateStudent = () => {
 		if (studentId) {
 			setStudents((student) =>
 				students.map((stud) =>
-					stud.id == studentId
+					stud.id === studentId
 						? {
 								id: studentId,
 								name: name,
@@ -41,7 +41,7 @@ export default function AddStudent() {
 			//navigate("/student");
 		} else {
 			let obj = {
-				id: Math.floor(Math.random() * 100 + 1),
+				id: Math.floor(Math.random() * 100 + 1).toString(),
 				name,
 				age,
 				course,
@@ -99,7 +99,6 @@ export default function AddStudent() {
 				<div className="mx-20">
 					<Button
 						variant="contained"
-						onClick={() => navigate("/student")}
 						color="success"
 						size="large"
 						onClick={updateStudent}
