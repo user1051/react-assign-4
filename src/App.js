@@ -4,6 +4,7 @@ import Contact from "./Contact";
 import Student from "./Student";
 import Header from "./Header";
 import AddStudent from "./AddStudent";
+
 function App() {
 	return (
 		<Router>
@@ -13,8 +14,11 @@ function App() {
 
 				<Route path="/student" element={<Student />} />
 
+				<Route path="/studentDesc" element={<AddStudent />}>
+					<Route path=":studentId" element={<AddStudent />} />
+				</Route>
+
 				<Route path="/contact" element={<Contact />} />
-				<Route path="/addStudent" element={<AddStudent />} />
 			</Routes>
 		</Router>
 	);

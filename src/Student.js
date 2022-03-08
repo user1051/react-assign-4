@@ -5,68 +5,29 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Link } from "react-router-dom";
-
-const rows = [
-	{
-		name: "John",
-		age: 24,
-		course: "MERN",
-		batch: "October",
-		change: (
-			<Link to="/addStudent" className="text-blue-500">
-				edit
-			</Link>
-		),
-	},
-	{
-		name: "Doe",
-		age: 25,
-		course: "MERN",
-		batch: "October",
-		change: (
-			<Link to="/addStudent" className="text-blue-500">
-				edit
-			</Link>
-		),
-	},
-	{
-		name: "ELon",
-		age: 33,
-		course: "MERN",
-		batch: "November",
-		change: (
-			<Link to="/addStudent" className="text-blue-500">
-				edit
-			</Link>
-		),
-	},
-	{
-		name: "Mark",
-		age: 27,
-		course: "MEAN",
-		batch: "September",
-		change: (
-			<Link to="/addStudent" className="text-blue-500">
-				edit
-			</Link>
-		),
-	},
-];
+import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import { useContext } from "react";
+import { StudentContext } from "./StudentContext";
+import PersonAddIcon from "@mui/icons-material/PersonAdd";
+import BorderColorIcon from "@mui/icons-material/BorderColor";
 
 export default function Student() {
+	const [rows] = useContext(StudentContext);
+	const navigate = useNavigate();
 	return (
 		<div className="flex flex-col bg-gradient-to-b from-indigo-300 via-pink-300 to-purple-500 h-screen pt-20">
 			<div className="flex  justify-around  my-10">
 				<h1 className="text-3xl font-bold">Students Details</h1>
-				<Link
-					to="/addStudent"
-					className="bg-blue-100 flex items-center p-2 text-xl rounded-3xl w-1/5 justify-center border-2 border-black cursor-pointer"
+				<Button
+					sx={{ fontSize: 16 }}
+					onClick={() => navigate("/studentDesc")}
+					variant="contained"
 				>
-					Add New Student
-				</Link>
+					<PersonAddIcon sx={{ marginRight: 1 }} /> Add New Student
+				</Button>
 			</div>
-			<div className="flex justify-center px-40">
+			<div className="flex justify-center px-60">
 				<TableContainer component={Paper}>
 					<Table aria-label="simple table">
 						<TableHead>
@@ -81,7 +42,7 @@ export default function Student() {
 						<TableBody>
 							{rows.map((row) => (
 								<TableRow
-									key={row.name}
+									key={row.id}
 									sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
 								>
 									<TableCell component="th" scope="row" align="center">
@@ -90,7 +51,18 @@ export default function Student() {
 									<TableCell align="center">{row.age}</TableCell>
 									<TableCell align="center">{row.course}</TableCell>
 									<TableCell align="center">{row.batch}</TableCell>
-									<TableCell align="center">{row.change}</TableCell>
+									<TableCell
+										align="center"
+										// onClick={() => navigate(`/studentDesc/${row.id}`)}
+									>
+										<Button
+											onClick={() => navigate(`/studentDesc/${row.id}`)}
+											variant="contained"
+											className="text-blue-500"
+										>
+											<BorderColorIcon sx={{ fontSize: 16 }} />
+										</Button>
+									</TableCell>
 								</TableRow>
 							))}
 						</TableBody>

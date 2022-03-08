@@ -3,7 +3,7 @@ export default function Header() {
 	return (
 		<div className="flex w-full h-16 bg-indigo-900 justify-around items-center fixed top-0">
 			<NavLink
-				to="home"
+				to="/"
 				className={({ isActive }) =>
 					isActive
 						? "text-red-300 text-2xl hover:text-red-300"
