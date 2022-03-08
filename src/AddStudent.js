@@ -13,7 +13,7 @@ export default function AddStudent() {
 	const [batch, setBatch] = useState("");
 
 	useEffect(() => {
-		students.map((s) => {
+		students.forEach((s) => {
 			if (s.id == studentId) {
 				setName(s.name);
 				setAge(s.age);
